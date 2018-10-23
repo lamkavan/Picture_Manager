@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GuiLayout">
+   <top>
+      <VBox prefHeight="0.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar />
+            <HBox fx:id="hbox" prefHeight="0.0" prefWidth="600.0">
+               <children>
+                  <VBox prefHeight="50.0" prefWidth="398.0">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Directory: ">
+                                 <effect>
+                                    <Lighting>
+                                       <bumpInput>
+                                          <Shadow />
+                                       </bumpInput>
+                                       <light>
+                                          <Light.Distant />
+                                       </light>
+                                    </Lighting>
+                                 </effect></Text>
+                              <Text fx:id="directoryText" strokeType="OUTSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selected Picture: " />
+                              <Text fx:id="selectedPictureText" strokeType="OUTSIDE" strokeWidth="0.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Button fx:id="filterPicturesButton" mnemonicParsing="false" onAction="#hidePicturesWithoutSpecifiedTags" text="Hide Pics Using Tags">
+                     <font>
+                        <Font size="11.0" />
+                     </font></Button>
+                  <Button fx:id="hideSubDirectoryPictures" mnemonicParsing="false" onAction="#hideSubdirectoryPictures" text="Filter Out Pics in Subdirectories">
+                     <font>
+                        <Font size="11.0" />
+                     </font></Button>
+                  <Button fx:id="showFilteredPicturesButton" mnemonicParsing="false" onAction="#showHiddenPictures" text="Show All Hidden Pictures">
+                     <font>
+                        <Font size="11.0" />
+                     </font></Button>
+                  <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="74.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="sortButton" mnemonicParsing="false" onAction="#sortExistingTags" text="Sort Tag Set" textFill="#0b18cc">
+                     <font>
+                        <Font size="11.0" />
+                     </font></Button>
+                  <TextField fx:id="keyWordEntry" promptText="Enter Keyword Here">
+                     <font>
+                        <Font size="11.0" />
+                     </font></TextField>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#removeTagsFromPicture" prefHeight="24.0" prefWidth="150.0" text="Delete Current Tag" textFill="#d91a1a">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#removeTagsFromExistingTags" text="Delete From Tag Set" textFill="#d91a1a">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="revertToPrevButton" mnemonicParsing="false" onAction="#revertToPrev" text="Revert To Previous Name" textFill="#d91a1a">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox fx:id="bottomButtonHBox">
+               <children>
+                  <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="22.0" prefWidth="225.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="changeDirButton" mnemonicParsing="false" onAction="#changeCurrentDirectory" text="Change Directory" textFill="#0b18cc">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="movePicToDirButton" mnemonicParsing="false" onAction="#changeFileDirectory" text="Move Picture To" textFill="#0b18cc">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="addToPicButton" mnemonicParsing="false" onAction="#addToPicClicked" prefHeight="24.0" prefWidth="143.0" text="Add Tag to Picture" textFill="#05c21b">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="addNewTagToListButton" mnemonicParsing="false" onAction="#addNewTagButtonClicked" text="Add New Tag" textFill="#05c21b">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <TextField fx:id="newTagToList" promptText="Enter Tag Here">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="bottomLabel" text="Welcome" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane id="scrollPane" fx:id="scrollPane" fitToWidth="true" prefWidth="900.0" />
+            <ScrollPane prefHeight="278.0" prefWidth="402.0">
+               <content>
+                  <VBox fx:id="logBox" prefHeight="264.0" prefWidth="198.0" spacing="9.0">
+                     <children>
+                        <Label text="Logs:" />
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <VBox prefHeight="200.0">
+               <children>
+                  <Label text="Tag Set" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="existingTagBox" prefHeight="200.0" />
+                     </content>
+                  </ScrollPane>
+                  <Label prefHeight="17.0" prefWidth="100.0" text="Current Tags" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="currentTagBox" prefHeight="200.0" />
+                     </content>
+                  </ScrollPane>
+                  <Label text="PreviousNames" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="prevNameBox" prefHeight="200.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
